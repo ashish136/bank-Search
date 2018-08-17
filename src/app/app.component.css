@@ -1,0 +1,14 @@
+.main-block {
+  margin-top: 50px;
+}
+.bank-dropdown > li:hover {
+  background-color: rgb(230, 221, 221);
+  cursor: pointer;
+}
+.bank-table {
+  height: 600px;
+}
+.main-heading {
+  margin-top: 20px;
+  text-align: center;
+}
