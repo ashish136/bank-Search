@@ -15,6 +15,7 @@ export class AppComponent {
   regex: RegExp;
   constructor(private bankService: BankService) {
     this.city = ["BANGALORE", "LUCKNOW", "MUMBAI", "KANPUR", "DELHI"];
+    bankService.offset=0;
   }
   ngOnInit() {
     this.getBanks("BANGALORE");
@@ -22,11 +23,12 @@ export class AppComponent {
   search(): void {
     this.regex = new RegExp(this.bankSearch, "i");
     this.banks = this.banksDuplicate.filter(bank => {
-      return bank.bank_name.search(this.regex) != -1;
+      return (bank.bank_name.search(this.regex) != -1 ||bank.branch.search(this.regex) != -1 ||bank.ifsc.search(this.regex) != -1 ||bank.city.search(this.regex) != -1 ||bank.district.search(this.regex) != -1 ||bank.address.search(this.regex) != -1 ||bank.state.search(this.regex) != -1 || bank.bank_id.toString().search(this.regex) != -1 );
     });
   }
   fetchData(city: string): void {
     this.bankSearch = "";
+    this.bankService.offset=0;
     this.getBanks(city);
   }
   getBanks(city: string): void {
@@ -36,5 +38,15 @@ export class AppComponent {
       this.currentCity = city;
       console.log(this.banks);
     });
+  }
+  nextPrevBanks(op : number):void {
+    if(op==0){
+      this.bankService.offset=this.bankService.offset-50;
+      this.getBanks( this.currentCity);
+    }
+    else if(op==1){
+      this.bankService.offset=this.bankService.offset+50;
+      this.getBanks( this.currentCity);
+    }
   }
 }

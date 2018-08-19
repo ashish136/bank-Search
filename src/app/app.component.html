@@ -56,4 +56,17 @@
       </tbody>
     </table>
   </div>
+  <div class="row">
+    <div class="col-md-3">
+    
+      <input type="button" class="btn" value="previous" (click)="nextPrevBanks(0)" [disabled]="bankService.offset<=0">
+    </div>
+    <div class="col-md-6">
+    
+
+    </div>
+    <div class="col-md-3">
+     <input type="button" class="btn" value="next" (click)="nextPrevBanks(1)">
+    </div>
+  </div>
 </div>

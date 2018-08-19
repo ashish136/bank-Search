@@ -8,10 +8,15 @@ const httpOptions = {
   providedIn: "root"
 })
 export class BankService {
-  private bankUrl = "https://app.fyle.in/api/bank_branches?city=";
+  city : string;
+  offset:number;
+  limit : string;
+  private bankUrl:string;
   constructor(private http: HttpClient) {}
 
   getBanks(city: string): Observable<any> {
-    return this.http.get(this.bankUrl + city);
+    this.city=city;
+  this.bankUrl = `https://app.fyle.in/api/bank_branches?city=${this.city}&offset=${this.offset}&limit=50`;
+    return this.http.get(this.bankUrl);
   }
 }
