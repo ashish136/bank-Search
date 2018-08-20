@@ -6,9 +6,12 @@
   cursor: pointer;
 }
 .bank-table {
-  height: 600px;
+  height: 500px;
 }
 .main-heading {
   margin-top: 20px;
   text-align: center;
+}
+.next-prev {
+  margin: 10px 0px;
 }
